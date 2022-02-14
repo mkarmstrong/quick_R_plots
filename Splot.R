@@ -4,6 +4,12 @@ Splot <- function(x,
                   ylb = "y", 
                   rl = TRUE) {
   
+  #- x = x variable (independent)
+  #- y = y variable (dependent)
+  #- xlb = x axis label
+  #- ylb = y axis label
+  #- rl = include regression line TRUE/FALSE (defalut TRUE)
+  
   minx <- min(x, na.rm = T)
   miny <- min(y, na.rm = T)
   maxx <- max(x, na.rm = T)
