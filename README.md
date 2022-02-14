@@ -17,3 +17,11 @@ Bplot(as.factor(mtcars$cyl), mtcars$disp,
 # Bland-Altman plot
 BAplot(iris$Sepal.Length, iris$Sepal.Width)
 ```
+
+
+
+![Scatter plot](Scatter_plot.png)
+
+![Box plot](Boxplot.png)
+
+![Bland-Altman plot](BlandAltman.png)
