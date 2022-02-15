@@ -8,20 +8,22 @@ The functions herein are for drawing plots with accompanying stats, which may be
 Splot(mtcars$wt, mtcars$mpg,
       ylb = "Miles per gallon",
       xlb = "Weight")
+```
 
+![Scatter plot](Scatter_plot.png)
+
+```R
 # Boxplot
 Bplot(as.factor(mtcars$cyl), mtcars$disp,
       ylb = "Displacment",
       xlb = "Cylinders")
+```
 
+![Box plot](Boxplot.png)
+
+```R
 # Bland-Altman plot
 BAplot(iris$Sepal.Length, iris$Sepal.Width)
 ```
-
-
-
-![Scatter plot](Scatter_plot.png)
-
-![Box plot](Boxplot.png)
 
 ![Bland-Altman plot](BlandAltman.png)
