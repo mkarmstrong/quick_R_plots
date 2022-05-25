@@ -1,6 +1,6 @@
 BAplot <- function(xvar, yvar, 
                    xlb = "Means ((x+y)/2)", 
-                   ylb = "Difference (x-y)",
+                   ylb = "Difference (y-x)",
                    xmin = NULL, xmax = NULL,
                    ymin = NULL, ymax = NULL,
                    rl = TRUE,
@@ -20,10 +20,10 @@ BAplot <- function(xvar, yvar,
   mod <- lm(y ~ x)
   
   mean_diff <- round(mean(y, na.rm = T), 4)
-  sd_diff <- round(sd(y), 4)
-  ub <- round(mean_diff + 1.96 * sd(y), 4)
-  lb <- round(mean_diff - 1.96 * sd(y), 4)
-  yrange <- round(range(y), 4)
+  sd_diff <- round(sd(y, na.rm = T), 4)
+  ub <- round(mean_diff + 1.96 * sd(y, na.rm = T), 4)
+  lb <- round(mean_diff - 1.96 * sd(y, na.rm = T), 4)
+  yrange <- round(range(y, na.rm = T), 4)
   
   over.ub <- length(which(y > ub))
   under.lb <- length(which(y < lb))
