@@ -1,7 +1,16 @@
 # Custom R plots for exploratory analyses
 
-These R functions (Splot, Bplot, BAplot) are for drawing plots with accompanying stats, which may be particularly useful in the exploratory phase of data analysis.
+These R functions ("Splot.R", "Bplot.R", "BAplot.R") are for drawing plots with accompanying stats, this is particularly useful in the exploratory phase of data analysis.
 
+To load the plot function use:
+
+```R
+devtools::source_url("https://raw.githubusercontent.com/mkarmstrong/quick_R_plots/main/Splot.R")  # scatter plot
+devtools::source_url("https://raw.githubusercontent.com/mkarmstrong/quick_R_plots/main/Bplot.R")  # box plot
+devtools::source_url("https://raw.githubusercontent.com/mkarmstrong/quick_R_plots/main/BAplot.R") # bland-altman plot
+```
+
+To use plot functions, see examples below:
 
 ```R
 # Scatter plot
