@@ -1,17 +1,26 @@
-Bplot <- function(xvar, 
-                  yvar, 
-                  ylb = "yvar", 
-                  xlb = "xvar") {
+Bplot <- function(x, 
+                  y,
+                  xlb = "x",
+                  ylb = "y") {
 
   
-  miny <- min(yvar, na.rm = T)
-  maxy <- max(yvar, na.rm = T)
+  miny <- min(y, na.rm = T)
+  maxy <- max(y, na.rm = T)
   buf <- 0.1 # 10%
   y1 <- miny - ((maxy - miny) * buf)
   y2 <- maxy + ((maxy - miny) * buf)
   
+  # get x & y axis labels
+  if(xlb == "x") {
+    xlb <- deparse(substitute(x))
+  }
+  
+  if(ylb == "y") {
+    ylb <- deparse(substitute(y))
+  }
+  
   plot(
-    yvar ~ xvar,
+    y ~ x,
     lwd = 2,
     boxwex = 0.3,
     ylim = c(y1, y2),
@@ -22,16 +31,18 @@ Bplot <- function(xvar,
   )
   
   
-  if (nlevels(xvar) > 2) {
+  if (nlevels(x) > 2) {
     
-    aovm <- aov(yvar ~ xvar)
+    aovm <- aov(y ~ x)
     aov.mod <- summary(aovm)
     pval <- aov.mod[[1]][1,5]
+    
     if(pval < 0.001) {
-      pval <- "<0.001"
+      pval <- "P <0.001"
     } else {
-      pval <- round(pval, 3)
+      pval <- paste0('P = ', round(pval, 3)) 
     }
+    
     print(TukeyHSD(aovm))
     
     
@@ -39,9 +50,7 @@ Bplot <- function(xvar,
     par(xpd = TRUE)
     legend(
       'bottomleft',
-      legend = c(
-        paste0('Pval = ', pval)
-      ),
+      legend = pval,
       cex = .9,
       bty = 'n',
       y.intersp = .9)
@@ -50,24 +59,26 @@ Bplot <- function(xvar,
     
   } else {
     
-    ttst <- t.test(yvar ~ xvar)
+    ttst <- t.test(y ~ x)
     pval <- ttst[[3]]
+    
     if(pval < 0.001) {
-      pval <- "<0.001"
+      pval <- "P <0.001"
     } else {
-      pval <- round(pval, 3)
+      pval <- paste0('P = ', round(pval, 3))
     }
+    
     print(ttst)
     
     par(xpd = TRUE)
+    
     legend(
       'bottomleft',
-      legend = c(
-        paste0('Pval = ', pval)
-      ),
+      legend = pval,
       cex = .9,
       bty = 'n',
       y.intersp = .9)
+    
     par(xpd=FALSE)
     
   }
