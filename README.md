@@ -5,6 +5,7 @@ The functions herein are for drawing plots with accompanying stats, which may be
 
 ```R
 # Scatter plot
+# requires: install.packages("jtools")
 Splot(mtcars$wt, mtcars$mpg,
       ylb = "Miles per gallon",
       xlb = "Weight")
