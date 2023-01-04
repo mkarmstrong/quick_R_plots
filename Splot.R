@@ -4,12 +4,6 @@ Splot <- function(x,
                   ylb = "y", 
                   rl = TRUE) {
   
-  #- x = x variable (independent)
-  #- y = y variable (dependent)
-  #- xlb = x axis label
-  #- ylb = y axis label
-  #- rl = include regression line TRUE/FALSE (defalut TRUE)
-  
   minx <- min(x, na.rm = T)
   miny <- min(y, na.rm = T)
   maxx <- max(x, na.rm = T)
@@ -26,6 +20,16 @@ Splot <- function(x,
     pval <- "<0.001"
   }
   
+  # get x & y axis labels
+  if(xlb == "x") {
+    xlb <- deparse(substitute(x))
+  }
+  
+  if(ylb == "y") {
+    ylb <- deparse(substitute(y))
+  }
+  
+  # create a buffer points (purely aesthetic)
   buf <- 0.15 # 10%
   x1 <- minx - ((maxx - minx) * buf)
   x2 <- maxx + ((maxx - minx) * buf)
