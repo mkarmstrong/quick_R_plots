@@ -49,20 +49,24 @@ Splot <- function(x,
                  frame.plot = F)
   
   par(xpd=TRUE)
-  if (beta > 0) {
+  if (sumlm$coefficients[2,1] > 0) {
     
-    legend('topleft', legend = c(paste0('B = ', beta), 
-                                 paste0('P = ', pval), 
-                                 paste0('R2 = ', r2),
-                                 paste0('R = ', cor)),
+    legend('bottomright', legend = c(
+      #paste0('B = ', beta), 
+      paste0('r = ', cor),
+      paste0('P = ', pval), 
+      paste0('R2 = ', r2)
+      ),
            cex = .9, bty = 'n', y.intersp=.9)
     
-  } else if (beta < 0) {
+  } else if (sumlm$coefficients[2,1] <= 0) {
     
-    legend('bottomleft', legend = c(paste0('B = ', beta), 
-                                    paste0('P = ', pval), 
-                                    paste0('R2 = ', r2),
-                                    paste0('R = ', cor)), 
+    legend('topright', legend = c(
+      #paste0('B = ', beta), 
+      paste0('r = ', cor),
+      paste0('P = ', pval), 
+      paste0('R2 = ', r2)
+      ), 
            cex = .9,  bty = 'n', y.intersp=.9)
     
   }
