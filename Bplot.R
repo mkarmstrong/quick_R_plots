@@ -19,6 +19,8 @@ Bplot <- function(x,
     ylb <- deparse(substitute(y))
   }
   
+  x <- as.factor(x)
+  
   plot(
     y ~ x,
     lwd = 2,
@@ -30,6 +32,14 @@ Bplot <- function(x,
     frame.plot = F
   )
   
+  stripchart(y ~ x,
+             method = "jitter",
+             pch = 21,
+             vertical = T,
+             jitter = 0.1,
+             cex = 1.5,
+             bg = "lightblue",
+             add = T)
   
   if (nlevels(x) > 2) {
     
