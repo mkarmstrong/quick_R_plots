@@ -27,6 +27,7 @@ Bplot <- function(x,
     boxwex = 0.3,
     ylim = c(y1, y2),
     notch = F,
+    outline = FALSE,
     ylab = ylb,
     xlab = xlb,
     frame.plot = F
